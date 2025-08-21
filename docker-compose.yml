@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: banking_system_db
+    environment:
+      POSTGRES_DB: banking_system
+      POSTGRES_USER: bank_user
+      POSTGRES_PASSWORD: bank_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bank_user -d banking_system"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - banking_network
+
+  app:
+    build: .
+    container_name: banking_system_app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: banking_system
+      DB_USER: bank_user
+      DB_PASSWORD: bank_password
+      DB_URL: jdbc:postgresql://postgres:5432/banking_system
+    stdin_open: true
+    tty: true
+    networks:
+      - banking_network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  banking_network:
+    driver: bridge
