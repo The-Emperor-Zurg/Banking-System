@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.TheEmperorZurg.entities.accounts.BaseAccount;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class ClientEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -32,7 +33,7 @@ public class ClientEntity {
     private String address;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<AccountEntity> accounts;
+    private List<BaseAccount> accounts;
 
     public boolean isSuspicious() {
         return passport == null || address == null;

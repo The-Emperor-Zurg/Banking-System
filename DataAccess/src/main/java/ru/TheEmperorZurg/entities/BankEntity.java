@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import ru.TheEmperorZurg.entities.accounts.BaseAccount;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -36,5 +37,8 @@ public class BankEntity {
     private BigDecimal suspiciousLimit;
 
     @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<AccountEntity> accounts;
+    private List<BaseAccount> accounts;
+
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BankDepositRate> bankDepositRates;
 }
