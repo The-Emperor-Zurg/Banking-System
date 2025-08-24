@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
+public interface IClientRepository extends JpaRepository<ClientEntity, Long> {
 
     Optional<ClientEntity> findByPassport(Integer passport);
 

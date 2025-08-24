@@ -7,7 +7,7 @@ import ru.TheEmperorZurg.entities.CentralBankDepositRate;
 import java.util.List;
 
 @Repository
-public interface CentralBankDepositRateRepository extends JpaRepository<CentralBankDepositRate, Long> {
+public interface ICentralBankDepositRateRepository extends JpaRepository<CentralBankDepositRate, Long> {
 
     List<CentralBankDepositRate> findAllByOrderByOrderIndex();
 }

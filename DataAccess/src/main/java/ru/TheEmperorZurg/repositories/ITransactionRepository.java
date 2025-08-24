@@ -13,7 +13,7 @@ import ru.TheEmperorZurg.enums.TransactionStatus;
 import java.util.List;
 
 @Repository
-public interface TransactionRepository extends JpaRepository<BaseTransaction, Long> {
+public interface ITransactionRepository extends JpaRepository<BaseTransaction, Long> {
 
     List<BaseTransaction> findByStatus(TransactionStatus status);
 

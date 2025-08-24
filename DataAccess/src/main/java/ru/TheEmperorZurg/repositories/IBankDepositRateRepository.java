@@ -5,7 +5,7 @@ import ru.TheEmperorZurg.entities.BankDepositRate;
 
 import java.util.List;
 
-public interface BankDepositRateRepository extends JpaRepository<BankDepositRate, Long> {
+public interface IBankDepositRateRepository extends JpaRepository<BankDepositRate, Long> {
 
     List<BankDepositRate> findByBankIdOrderByOrderIndex(Long bankId);
 

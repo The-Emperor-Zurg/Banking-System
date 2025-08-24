@@ -8,13 +8,12 @@ import org.springframework.stereotype.Repository;
 import ru.TheEmperorZurg.entities.accounts.BaseAccount;
 import ru.TheEmperorZurg.entities.accounts.DebitAccount;
 import ru.TheEmperorZurg.entities.accounts.DepositAccount;
-import ru.TheEmperorZurg.enums.AccountType;
 
 import java.util.List;
 
 
 @Repository
-public interface AccountRepository extends JpaRepository<BaseAccount, Long> {
+public interface IAccountRepository extends JpaRepository<BaseAccount, Long> {
 
     List<BaseAccount> findByClientId(Long clientId);
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface BankRepository extends JpaRepository<BankEntity, Long> {
+public interface IBankRepository extends JpaRepository<BankEntity, Long> {
 
     Optional<BankEntity> findByName(String name);
 
