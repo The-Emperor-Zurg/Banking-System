@@ -12,9 +12,10 @@ import java.util.Optional;
 
 @Repository
 public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
+
     Optional<ClientEntity> findByPassport(Integer passport);
 
-    List<ClientEntity> findByNameAndSurName(String name, String surName);
+    List<ClientEntity> findByNameAndSurname(String name, String surName);
 
     @Query("SELECT c FROM ClientEntity c WHERE c.passport IS NULL OR c.address IS NULL")
     List<ClientEntity> findSuspiciousClients();

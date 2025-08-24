@@ -1,5 +1,8 @@
 package ru.TheEmperorZurg.entities.accounts;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.NoArgsConstructor;
 import ru.TheEmperorZurg.entities.BankEntity;
 import ru.TheEmperorZurg.entities.ClientEntity;
 import ru.TheEmperorZurg.enums.AccountType;
@@ -7,6 +10,9 @@ import ru.TheEmperorZurg.enums.AccountType;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@DiscriminatorValue("DEPOSIT")
+@NoArgsConstructor
 public class DepositAccount extends BaseAccount {
 
     public DepositAccount(ClientEntity client, BankEntity bank, Date endDate) {
